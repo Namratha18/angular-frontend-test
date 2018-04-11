@@ -1,3 +1,29 @@
-<h1>
-  {{title}}
-</h1>
+
+<div class="body-container font-family">
+  <div class="header" (click)="openMenu()">
+      <div class="logo" >
+          <i class="fa fa-bars" style="margin-right: 5px;color: white;"></i>
+          <img src="./assets/images/r-3-l-logo-application-02.png" alt="">
+      </div>
+      <div class="settings">
+          Admin Name
+          <i style="font-size: 12px; margin-left: 5px; "> <img style="width: 50%;" src="./assets/images/shape@2x.png"/> </i>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="side-bar" id="sideMenu">
+        <div class="navigate">NAVIGATE</div>
+        <a routerLink = "analytics"  >  <div class="navigate-elements">Analytics</div> </a>
+        <a routerLink = "news"> <div class="navigate-elements">News</div> </a>
+        <div class="navigate-elements">Board Brief</div> 
+        <div class="navigate-elements">Briefcase</div>
+        <div class="close-menu" (click)="closeMenu()">Close Menu</div>
+      </div>
+      
+      <div class="body-element" id="bodyElement">
+          <router-outlet> </router-outlet>
+      </div>
+    </div>
+</div>
+
+  

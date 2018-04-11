@@ -1,0 +1,34 @@
+.charts-container{
+    padding: 2vw; 
+    width:100%;
+}
+.chart-one{
+    width: 70%; 
+    height: 30%;
+    background-color:white;
+    border-radius:0.3vw;
+    border:1px solid rgb(228, 225, 225);
+    margin-bottom:2vw;
+}
+.chart-title{
+    color: #7cb2ed;
+    padding:1vw;
+    font-weight:bold;
+}
+.chart-two{
+    width: 40%; 
+    height: 40%; 
+    display: inline-block;
+    background-color:white;
+    border-radius:0.3vw;
+    border:1px solid rgb(228, 225, 225);
+    margin-right:2vw;
+}
+.chart-three{
+    width: 40%; 
+    height: 40%; 
+    display: inline-block;
+    background-color:white;
+    border-radius:0.3vw;
+    border:1px solid rgb(228, 225, 225);
+}

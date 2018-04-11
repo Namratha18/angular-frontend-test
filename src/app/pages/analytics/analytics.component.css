@@ -2,7 +2,7 @@
     padding: 2vw; 
     width:100%;
 }
-.chart-one{
+.chart-line{
     width: 70%; 
     height: 30%;
     background-color:white;
@@ -15,7 +15,7 @@
     padding:1vw;
     font-weight:bold;
 }
-.chart-two{
+.chart-bar{
     width: 40%; 
     height: 40%; 
     display: inline-block;
@@ -24,7 +24,7 @@
     border:1px solid rgb(228, 225, 225);
     margin-right:2vw;
 }
-.chart-three{
+.chart-doughnut{
     width: 40%; 
     height: 40%; 
     display: inline-block;

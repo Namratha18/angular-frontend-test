@@ -10,6 +10,7 @@ import { NewsComponent }      from './pages/news/news.component';
 
 import { DataLoaderService } from './providers/data-loader.service';
 
+//navigating pages
 const routes: Routes = [
   { path: '', redirectTo: 'analytics', pathMatch: 'full' },
   { path: 'analytics', component: AnalyticsComponent },

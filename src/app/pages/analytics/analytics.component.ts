@@ -10,11 +10,11 @@ import * as Chart from 'chart.js';
   styleUrls: ['./analytics.component.css']
 })
 export class AnalyticsComponent implements OnInit {
-  chart;
-  chart2;
-  chart3;
+  lineChart;
+  barChart;
+  doughnutChart;
 
-  jsonData;
+  activityJsonData;
   initialTime;
   dataSpeedSets = [];
   dataCountSets = [];
@@ -23,7 +23,8 @@ export class AnalyticsComponent implements OnInit {
   pieColors = [];
   pieData = [];
 
-  pieConfiguration = {
+  //Configuration of doughnut chart
+  doughnutConfiguration = {
    type: 'doughnut',
    data: 
    {
@@ -39,7 +40,7 @@ export class AnalyticsComponent implements OnInit {
      responsive: true
    }
  };
-
+  //Configuration of line chart
   lineConfig = {
    type: 'line',
    data: 
@@ -86,7 +87,7 @@ export class AnalyticsComponent implements OnInit {
      }
    }
    };
-
+   //Configuration of bar chart
    barChartData = 
    {
      labels: ['1'],
@@ -96,19 +97,21 @@ export class AnalyticsComponent implements OnInit {
   constructor(private dataService: DataLoaderService) { }
 
   ngOnInit() {
-   this.getInitialData()
+    //fetching initial data from activity-data.json
+    this.getInitialData(); 
   }
 
   getInitialData() {
     this.dataService.getJSON().subscribe(res => {
-      this.jsonData = res;
+      this.activityJsonData = res;
       this.createChart();
     },
     err => console.log(err));
   }
 
+  /* Creation of chart */
   createChart(){
-    this.jsonData.forEach(data => {
+    this.activityJsonData.forEach(data => {
       var color = [this.getColor(), this.getColor()];
       var speedObj = 
       {
@@ -140,7 +143,7 @@ export class AnalyticsComponent implements OnInit {
       this.labels.push(d.getHours() + ":" + d.getMinutes());
     });
     var linectx = (<HTMLCanvasElement>document.getElementById('canvas')).getContext('2d');
-    this.chart = new Chart(linectx, this.lineConfig);
+    this.lineChart = new Chart(linectx, this.lineConfig);
     
     var barctx = (<HTMLCanvasElement>document.getElementById('barCanvasId')).getContext('2d');
     var a:any = 
@@ -161,16 +164,18 @@ export class AnalyticsComponent implements OnInit {
         }
       }
     };
-    this.chart2 = new Chart(barctx, a);
-    this.chart2.update();
+    this.barChart = new Chart(barctx, a);
+    this.barChart.update();
 
 
     var piectx = (<HTMLCanvasElement>document.getElementById('pieCanvasId')).getContext('2d');
-    this.chart3 = new Chart(piectx, this.pieConfiguration);
+    this.doughnutChart = new Chart(piectx, this.doughnutConfiguration);
 
     this.updateChartGraph();
   }
-  
+  /* Creation of graph - end */
+
+  //Updation of chart based time interval
   updateChartGraph(){
     setInterval(()=>{
       this.initialTime += 60000;
@@ -187,15 +192,16 @@ export class AnalyticsComponent implements OnInit {
         this.pieData[i] = (this.pieData[i] + speed) / 2;
       });
 
-      this.chart.update();
-      this.chart3.update();
+      this.lineChart.update();
+      this.doughnutChart.update();
       this.dataCountSets.forEach(data=>{
         data.data[0] = 10 * Math.random();
       });
-      this.chart2.update();
+      this.barChart.update();
     }, 1000)
   }
 
+  //Fetching random color for the app
   getColor() {
     var values = '0123456789ABCDEF';
     var color = '#';

@@ -1,5 +1,6 @@
 
 <div class="body-container font-family">
+  <!-- header bar - start  -->
   <div class="header" (click)="openMenu()">
       <div class="logo" >
           <i class="fa fa-bars" style="margin-right: 5px;color: white;"></i>
@@ -10,7 +11,9 @@
           <i style="font-size: 12px; margin-left: 5px; "> <img style="width: 50%;" src="./assets/images/shape@2x.png"/> </i>
       </div>
     </div>
+    <!-- header bar - end  -->
     <div class="main-container">
+      <!-- side nav bar - start  -->
       <div class="side-bar" id="sideMenu">
         <div class="navigate">NAVIGATE</div>
         <a routerLink = "analytics"  >  <div class="navigate-elements">Analytics</div> </a>
@@ -19,10 +22,12 @@
         <div class="navigate-elements">Briefcase</div>
         <div class="close-menu" (click)="closeMenu()">Close Menu</div>
       </div>
-      
+      <!-- side nav bar - end  -->
+      <!-- Main container - start  -->
       <div class="body-element" id="bodyElement">
           <router-outlet> </router-outlet>
       </div>
+      <!-- Main container - end  -->
     </div>
 </div>
 
